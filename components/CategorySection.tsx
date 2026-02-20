@@ -63,11 +63,12 @@ export const CategorySection = () => {
             {cat.isEvent ? (
               /* UNIQUE TICKET STYLE FOR EVENT */
               <div className="relative aspect-[4/5] bg-accent border-4 border-black p-2 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:-translate-y-1">
-                {/* Notched Corners (Ticket Effect) - Repositioned to cover shadow correctly */}
-                <div className="absolute -top-4 -left-4 w-8 h-8 bg-[#f0f0f0] border-4 border-black rounded-full z-20" />
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#f0f0f0] border-4 border-black rounded-full z-20" />
-                <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-[#f0f0f0] border-4 border-black rounded-full z-20" />
-                <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-[#f0f0f0] border-4 border-black rounded-full z-20" />
+                {/* Notched Corners (Ticket Effect) - Matches #f0f0f0 page background */}
+                {/* We use large circles that 'eat' into the card and its shadow */}
+                <div className="absolute -top-5 -left-5 w-10 h-10 bg-[#f0f0f0] rounded-full z-20 border-r-4 border-b-4 border-black" />
+                <div className="absolute -top-5 -right-5 w-10 h-10 bg-[#f0f0f0] rounded-full z-20 border-l-4 border-b-4 border-black" />
+                <div className="absolute -bottom-5 -left-5 w-10 h-10 bg-[#f0f0f0] rounded-full z-20 border-r-4 border-t-4 border-black" />
+                <div className="absolute -bottom-5 -right-5 w-10 h-10 bg-[#f0f0f0] rounded-full z-20 border-l-4 border-t-4 border-black" />
                 
                 <div className="relative w-full h-full overflow-hidden border-2 border-dashed border-black/30">
                   <Image 
