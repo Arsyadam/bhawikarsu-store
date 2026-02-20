@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,7 @@ export const Navbar = () => {
   const storeText = "STORE";
   
   // Animation variants
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
@@ -24,12 +24,12 @@ export const Navbar = () => {
     }),
   };
 
-  const child = {
+  const child: Variants = {
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 100,
       },
