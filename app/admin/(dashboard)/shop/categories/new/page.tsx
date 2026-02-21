@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
@@ -92,10 +93,11 @@ export default function NewCategoryPage() {
 
       if (error) throw error;
       
+      toast.success("Kategori berhasil dibuat!");
       router.push("/admin/shop/categories");
       router.refresh();
     } catch (err: any) {
-      alert("DATABASE REJECTION: " + err.message);
+      toast.error("Gagal membuat kategori: " + err.message);
     } finally {
       setLoading(false);
     }

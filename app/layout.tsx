@@ -37,6 +37,7 @@ export const metadata: Metadata = {
 };
 
 import { CartProvider } from "@/context/CartContext";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -45,6 +46,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${archivoBlack.variable} ${spaceGrotesk.variable} ${caveat.variable} antialiased`}
         suppressHydrationWarning
@@ -52,6 +55,7 @@ export default function RootLayout({
         <CartProvider>
           {children}
         </CartProvider>
+        <Toaster position="top-center" expand={true} richColors />
       </body>
     </html>
   );

@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter, useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
@@ -293,7 +294,7 @@ export default function EditProductPage() {
 
   const onSubmit = async (values: ProductFormValues) => {
     if (images.length === 0) {
-      alert("AT LEAST ONE PRODUCT IMAGE IS REQUIRED");
+      toast.error("Setidaknya satu gambar produk diperlukan!");
       return;
     }
 
@@ -365,9 +366,10 @@ export default function EditProductPage() {
       const { error } = await supabase.from("products").update(dbPayload).eq("id", productId);
       if (error) throw error;
       
+      toast.success("Perubahan berhasil disimpan!");
       router.push("/admin/shop/products");
     } catch (err: any) {
-      alert("DATABASE REJECTION: " + err.message);
+      toast.error("Gagal menyimpan perubahan: " + err.message);
     } finally {
       setSaving(false);
     }

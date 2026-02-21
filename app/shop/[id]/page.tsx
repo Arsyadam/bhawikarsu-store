@@ -12,6 +12,7 @@ import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useCart } from "@/context/CartContext";
 import { Badge } from "@/components/retroui/Badge";
+import { toast } from "sonner";
 
 interface Product {
   id: string;
@@ -122,15 +123,15 @@ export default function ProductDetailPage() {
 
   const handleAddToCart = () => {
     if (product?.variants?.colors?.enabled && !selectedColor) {
-      alert("Silakan pilih warna terlebih dahulu!");
+      toast.error("Silakan pilih warna terlebih dahulu!");
       return;
     }
     if (product?.variants?.sizes?.enabled && !selectedSize) {
-      alert("Silakan pilih ukuran terlebih dahulu!");
+      toast.error("Silakan pilih ukuran terlebih dahulu!");
       return;
     }
     if (product?.variants?.sleeves?.enabled && !selectedSleeve) {
-      alert("Silakan pilih jenis lengan terlebih dahulu!");
+      toast.error("Silakan pilih jenis lengan terlebih dahulu!");
       return;
     }
 

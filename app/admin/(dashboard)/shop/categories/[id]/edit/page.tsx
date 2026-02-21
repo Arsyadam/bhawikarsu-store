@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
@@ -67,7 +68,7 @@ export default function EditCategoryPage({ params }: EditCategoryPageProps) {
           if (data.image) setImagePreview(data.image);
         }
       } catch (err: any) {
-        alert("FETCH ERROR: " + err.message);
+        toast.error("Gagal mengambil data kategori: " + err.message);
         router.push("/admin/shop/categories");
       } finally {
         setFetching(false);
@@ -125,10 +126,11 @@ export default function EditCategoryPage({ params }: EditCategoryPageProps) {
 
       if (error) throw error;
       
+      toast.success("Perubahan kategori berhasil disimpan!");
       router.push("/admin/shop/categories");
       router.refresh();
     } catch (err: any) {
-      alert("DATABASE REJECTION: " + err.message);
+      toast.error("Gagal menyimpan perubahan: " + err.message);
     } finally {
       setLoading(false);
     }
@@ -146,10 +148,11 @@ export default function EditCategoryPage({ params }: EditCategoryPageProps) {
 
       if (error) throw error;
       
+      toast.success("Kategori berhasil dihapus!");
       router.push("/admin/shop/categories");
       router.refresh();
     } catch (err: any) {
-      alert("TERMINATION FAILED: " + err.message);
+      toast.error("Gagal menghapus kategori: " + err.message);
     } finally {
       setLoading(false);
     }

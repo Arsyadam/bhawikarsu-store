@@ -59,6 +59,8 @@ export const Navbar = () => {
     { name: "Donasi", href: "/donate" },
   ];
 
+  const isCartPage = pathname === "/cart" || pathname === "/checkout";
+
   return (
     <>
       <nav 
@@ -117,22 +119,24 @@ export const Navbar = () => {
               );
             })}
 
-            {/* Cart Button visible only at top of page */}
-            <Link href="/cart">
-                <Button 
-                  variant="outline" 
-                  asChild
-                  className={cn(
-                    "gap-2 px-6 border-2 border-black bg-primary transition-all rounded-none duration-300 overflow-hidden flex items-center hover:bg-red-700 hover:border-red-700",
-                    scrolled ? "w-0 opacity-0 pointer-events-none p-0 border-0" : "w-auto opacity-100"
-                  )}
-                >
-                  <div>
-                    <ShoppingCart className="w-5 h-5 text-white" />
-                    <Text as="h6" className="m-0 uppercase font-black text-white">Keranjang ({totalItems})</Text>
-                  </div>
-                </Button>
-            </Link>
+            {/* Cart Button visible only at top of page and NOT on cart/checkout page */}
+            {!isCartPage && (
+              <Link href="/cart">
+                  <Button 
+                    variant="outline" 
+                    asChild
+                    className={cn(
+                      "gap-2 px-6 border-2 border-black bg-primary transition-all rounded-none duration-300 overflow-hidden flex items-center hover:bg-red-700 hover:border-red-700",
+                      scrolled ? "w-0 opacity-0 pointer-events-none p-0 border-0" : "w-auto opacity-100"
+                    )}
+                  >
+                    <div>
+                      <ShoppingCart className="w-5 h-5 text-white" />
+                      <Text as="h6" className="m-0 uppercase font-black text-white">Keranjang ({totalItems})</Text>
+                    </div>
+                  </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -167,35 +171,40 @@ export const Navbar = () => {
                 </Link>
               );
             })}
-            <Link 
-                href="/cart"
-                onClick={() => setIsOpen(false)}
-                className="mt-4 mb-2 mr-2 block"
-              >
-                <Button variant="outline" className="w-full h-12 flex items-center justify-center gap-2 border-2 border-black">
-                  <ShoppingCart className="w-5 h-5 text-black" />
-                  <span className="m-0 uppercase text-sm tracking-widest font-black">KERANJANG ({totalItems})</span>
-                </Button>
-              </Link>
+            
+            {!isCartPage && (
+              <Link 
+                  href="/cart"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-4 mb-2 mr-2 block"
+                >
+                  <Button variant="outline" className="w-full h-12 flex items-center justify-center gap-2 border-2 border-black">
+                    <ShoppingCart className="w-5 h-5 text-black" />
+                    <span className="m-0 uppercase text-sm tracking-widest font-black">KERANJANG ({totalItems})</span>
+                  </Button>
+                </Link>
+            )}
           </div>
         </div>
       </nav>
 
-      {/* Floating Cart Button - visible only when scrolled */}
-      <Link 
-        href="/cart"
-        className={cn(
-          "fixed bottom-8 right-8 z-[60] transition-all duration-500",
-          scrolled ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
-        )}
-      >
-        <div className="relative bg-primary border-4 border-black p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
-          <ShoppingCart className="w-8 h-8 text-white" />
-          <span className="absolute -top-3 -right-3 bg-white text-black border-2 border-black rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shadow-sm">
-            {totalItems}
-          </span>
-        </div>
-      </Link>
+      {/* Floating Cart Button - visible only when scrolled and NOT on cart/checkout page */}
+      {!isCartPage && (
+        <Link 
+          href="/cart"
+          className={cn(
+            "fixed bottom-8 right-8 z-[60] transition-all duration-500",
+            scrolled ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0 pointer-events-none"
+          )}
+        >
+          <div className="relative bg-primary border-4 border-black p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
+            <ShoppingCart className="w-8 h-8 text-white" />
+            <span className="absolute -top-3 -right-3 bg-white text-black border-2 border-black rounded-full w-8 h-8 flex items-center justify-center font-black text-sm shadow-sm">
+              {totalItems}
+            </span>
+          </div>
+        </Link>
+      )}
     </>
   );
 };

@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 import { createClient } from "@/utils/supabase/client"
+import { toast } from "sonner"
 
 export type ProductColumn = {
   id: string
@@ -30,9 +31,12 @@ const deleteProduct = async (id: string) => {
   const supabase = createClient()
   const { error } = await supabase.from("products").delete().eq("id", id)
   if (error) {
-    alert("Error deleting product: " + error.message)
+    toast.error("Gagal menghapus produk: " + error.message)
   } else {
-    window.location.reload()
+    toast.success("Produk berhasil dihapus!")
+    setTimeout(() => {
+        window.location.reload()
+    }, 1000)
   }
 }
 

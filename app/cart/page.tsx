@@ -1,8 +1,7 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+
 import { Text } from "@/components/retroui/Text";
 import { Button } from "@/components/retroui/Button";
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ArrowLeft } from "lucide-react";
@@ -22,8 +21,7 @@ export default function CartPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f0f0f0] pt-24 md:pt-32">
-      <Navbar />
+    <div className="min-h-screen bg-[#f0f0f0] pt-12">
       
       <main className="max-w-7xl mx-auto px-4 md:px-12 pb-24">
         {/* Header */}
@@ -194,8 +192,6 @@ export default function CartPage() {
           </div>
         )}
       </main>
-
-      <Footer />
     </div>
   );
 }
