@@ -33,7 +33,7 @@ export default function CartPage() {
             <div className="flex items-center gap-2 mt-2">
               <div className="w-3 h-3 bg-primary border-2 border-black" />
               <Text className="text-[10px] uppercase font-bold tracking-[0.3em] opacity-60">
-                Manifest Saat Ini: {totalItems} Unit
+                Total: {totalItems} Produk
               </Text>
             </div>
           </div>
@@ -147,47 +147,10 @@ export default function CartPage() {
 
             {/* Summary */}
             <div className="lg:col-span-1 space-y-6">
-              {/* Donation Section */}
-              <div className="bg-white border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-1.5 h-4 bg-primary" />
-                  <Text className="text-xs font-black uppercase italic tracking-tight m-0">Protokol Dukungan</Text>
-                </div>
-                <Text className="text-[9px] font-bold text-zinc-400 uppercase tracking-widest leading-relaxed mb-4 block">
-                  Tambahkan kontribusi untuk mendukung operasional dan acara B.96 di masa depan.
-                </Text>
-                
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  {[10000, 25000, 50000].map((amt) => (
-                    <button
-                      key={amt}
-                      onClick={() => setDonation(donation === amt ? 0 : amt)}
-                      className={cn(
-                        "py-2 border-2 border-black text-[10px] font-black transition-all",
-                        donation === amt ? "bg-black text-white" : "bg-white hover:bg-zinc-100"
-                      )}
-                    >
-                      +{amt/1000}RB
-                    </button>
-                  ))}
-                </div>
-                
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-black opacity-30">Rp</span>
-                  <input
-                    type="number"
-                    placeholder="Jumlah Lainnya"
-                    value={donation || ""}
-                    onChange={(e) => setDonation(Number(e.target.value))}
-                    className="w-full bg-zinc-50 border-2 border-black p-2 pl-8 text-[11px] font-black focus:outline-none focus:bg-white"
-                  />
-                </div>
-              </div>
-
               <div className="bg-white text-black border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] sticky top-32">
                 <div className="flex items-center gap-2 mb-6">
                     <div className="w-2 h-6 bg-primary" />
-                    <Text as="h3" className="text-2xl font-black uppercase italic m-0 tracking-tighter">
+                    <Text as="h3" className="text-2xl font-black uppercase m-0 tracking-tighter">
                         Ringkasan
                     </Text>
                 </div>
@@ -197,29 +160,22 @@ export default function CartPage() {
                     <span className="uppercase font-bold opacity-40 tracking-widest text-[10px]">Subtotal ({totalItems} item)</span>
                     <span className="font-black">{formatPrice(subtotal)}</span>
                   </div>
-
-                  {donation > 0 && (
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="uppercase font-bold opacity-40 tracking-widest text-[10px]">Protokol Donasi</span>
-                      <span className="font-black text-primary">+{formatPrice(donation).replace("Rp", "")}</span>
-                    </div>
-                  )}
                   
                   <div className="pt-4 border-t-4 border-black border-double flex justify-between items-end">
-                    <span className="text-xl font-black uppercase italic">Total</span>
+                    <span className="text-xl font-black uppercase">Total</span>
                     <div className="text-right">
-                        <span className="text-3xl font-black text-primary block leading-none underline decoration-black decoration-4 underline-offset-4">
-                        {formatPrice(totalAmount)}
+                        <span className="text-3xl font-black text-primary block leading-none decoration-black decoration-4 underline-offset-4">
+                        {formatPrice(subtotal)}
                         </span>
                     </div>
                   </div>
                 </div>
 
                 <Link href="/checkout" className="block">
-                  <Button className="w-full py-8 text-xl font-black rounded-none border-4 border-black bg-black text-white border-black hover:bg-white hover:text-black transition-all group shadow-[6px_6px_0px_0px_rgba(255,49,49,1)] hover:shadow-none translate-y-[-2px] active:translate-y-0">
+                  <Button className="w-full py-5 text-sm font-black rounded-none border-2 border-black bg-primary text-black hover:bg-black hover:text-white transition-all group shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none translate-y-[-2px] active:translate-y-0">
                     <span className="flex items-center justify-center gap-3">
                       LANJUT KE PEMBAYARAN
-                      <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </Button>
                 </Link>
@@ -227,7 +183,7 @@ export default function CartPage() {
                 <div className="mt-8 pt-6 border-t border-black/10 flex flex-col gap-3">
                     <div className="flex items-center gap-2 opacity-40">
                         <div className="w-2 h-2 rounded-full bg-green-500" />
-                        <span className="text-[8px] font-black uppercase tracking-widest">Keamanan Protokol Terjamin</span>
+                        <span className="text-[8px] font-black uppercase tracking-widest">Transaksi Aman & Terenkripsi</span>
                     </div>
                     <p className="text-[8px] font-bold text-zinc-400 uppercase leading-relaxed">
                         PAJAK DAN ONGKOS KIRIM AKAN DIHITUNG PADA SAAT PROSES PEMBAYARAN AKHIR.

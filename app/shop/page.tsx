@@ -138,7 +138,7 @@ function ShopContent() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <Loader2 className="w-12 h-12 animate-spin text-black opacity-20" />
-        <Text className="text-[10px] uppercase font-black tracking-[0.3em] opacity-40">Sinkronisasi Database Katalog...</Text>
+        <Text className="text-[10px] uppercase font-black tracking-[0.3em] opacity-40">Memuat Katalog Produk...</Text>
       </div>
     );
   }
@@ -286,7 +286,7 @@ function ShopContent() {
 
             <div className="border-t border-black/5 p-4 flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-primary animate-pulse" />
-              <Text className="text-[8px] font-black uppercase tracking-tighter opacity-40">Sistem Online / Siap Memfilter</Text>
+              <Text className="text-[8px] font-black uppercase tracking-tighter opacity-40">Sistem Siap</Text>
             </div>
           </Card>
         </aside>
@@ -409,8 +409,8 @@ function ShopContent() {
                 </div>
               </div>
               <div className="flex flex-col items-start leading-none mt-1">
-                <span className="text-[10px] uppercase font-black tracking-widest opacity-60 text-left">Total Manifest: Rp {subtotal.toLocaleString("id-ID")}</span>
-                <span className="text-lg font-black uppercase italic tracking-tight">Protokol Pembayaran</span>
+                <span className="text-[10px] uppercase font-black tracking-widest opacity-60 text-left">Total: Rp {subtotal.toLocaleString("id-ID")}</span>
+                <span className="text-lg font-black uppercase italic tracking-tight">Checkout</span>
               </div>
               <div className="ml-4 w-8 h-8 bg-zinc-800 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
                 <ArrowRight className="w-4 h-4" />

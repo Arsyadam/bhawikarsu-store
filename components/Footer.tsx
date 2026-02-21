@@ -52,9 +52,12 @@ export const Footer = () => {
       </div>
 
       {/* Copyright Below */}
-      <div className="mt-8 text-center px-4">
-        <Text as="p" className="text-black/60 m-0 text-xs md:text-sm font-black uppercase tracking-widest">
+      <div className="mt-8 text-center px-4 space-y-2">
+        <Text as="p" className="text-black/60 m-0 text-[10px] md:text-sm font-black uppercase tracking-widest">
             © 2026 B96 STORE. DIBUAT DENGAN SEMANGAT DAN KODE. SELURUH HAK CIPTA DILINDUNGI.
+        </Text>
+        <Text as="p" className="text-black/40 m-0 text-[9px] font-black uppercase tracking-widest">
+            DIBUAT OLEH <Link href="https://arsyadam.id" target="_blank" className="text-primary hover:underline transition-all">ARSYADAM.ID</Link>
         </Text>
       </div>
     </footer>

@@ -12,13 +12,15 @@ export default function Home() {
     <div className="min-h-[200vh] bg-[#f0f0f0] pt-16 md:pt-20">
       <Navbar />
       
-      <main className="space-y-8 md:space-y-12 pb-24">
+      <main className="space-y-8 md:space-y-12 pb-24 relative isolate">
         {/* ... (Hero and Promo sections) */}
-        <section className="w-full">
+        <section className="w-full relative z-20">
           <HeroCarousel />
         </section>
 
-        <PromotionGrid />
+        <section className="relative z-10">
+          <PromotionGrid />
+        </section>
 
         {/* Categories Section */}
         <CategorySection />
